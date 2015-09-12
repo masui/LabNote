@@ -6,9 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>LabNote</title>
 <style type="text/css">
-a {
-  text-decoration: none;
-}
+a { text-decoration: none; }
 </style>
 </head>
 <body style="background-color:#f8f8f8">
@@ -55,22 +53,21 @@ a {
 
 <p/>
 <b><a href="http://GyaTV.com/">GyaTV</a></b> (ギャツビー) は、
-登録しておいたURLをスクリーンセーバのようにランダムに表示させることができるWebサービスです。
+登録しておいたURLをスクリーンセーバのようにランダムに表示することができるWebサービスです。
 
 原理は非常に簡単で、
-Web上のデータベースに登録しておいたURLのリストからランダムにひとつを取り出して
+私が運営しているGyazzというWikiのページに登録しておいたURLのリストから
+定期的にランダムにURLをひとつ選択してそのページを表示します。
 
-最近はあらゆるコンテンツがWeb上に存在しており、
-中身を吟味して選択したり感賞したりしているといくら時間があっても足りません。
+Web上のコンテンツの中身を吟味して選択したり感賞したりしているといくら時間があっても足りませんが、
+自動的に表示したものを見るだけにしておけば楽をすることができます。
 
-私が運営しているGyazzというWikiのページにURLを記述しておき、
-登録されているURLを適当な時間間隔をおいて表示するだけのサービスなのですが、
-簡単な割に様々な応用に利用することができて便利です。
-
-<p/>
+同じようなことを実現できる
 スクリーンセーバやデジタルフォトフレームは大昔からありますが、
-あまり積極的に利用されてはいないようです。
-GyaTVは原理は単純ですが、様々な利用が可能です。
+何故かあまり積極的に利用されてはいないようです。
+
+GyaTVのは原理はとても簡単ですが、
+様々な応用に便利に利用することができます。
 
 <h3>デジタルフォトフレームとしての利用</h3>
 
@@ -87,6 +84,19 @@ GyaTVは原理は単純ですが、様々な利用が可能です。
 私は「東京タワー」や「スミソニアン」の写真をよく表示しているのですが、
 綺麗なイラストや写真のまとめがよくWebに投稿されているので、
 これを利用すると楽しめます。
+
+<blockquote>
+  <img src="https://gyazo.com/b833ef566314794bb558cafe28233f2e.png" height=300><br/>
+  東京タワーのスライドショー (毎日新聞のサイトの写真をランダム表示)
+</blockquote>
+
+<a href="http://GyaTV.com/tower">http://GyaTV.com/tower</a>で表示したいURLは
+以下のように<a href="http://Gyazz.com/GyaTV/tower">http://Gyazz.com/GyaTV/tower</a>に登録しておきます。
+
+<blockquote>
+  <img src="https://gyazo.com/6c0897b3cbfec27dcaa43e40ed2073d7.png" height=200><br/>
+  URLのリスト
+</blockquote>
 
 <h3>Wikipediaのランダム表示</h3>
 
@@ -108,7 +118,9 @@ GyaTVにおまかせページを表示するJSのURLを登録しておけば、
 一定感覚で新しいページが表示されることになるのでなかなか新鮮です。
 
 <blockquote>
-  <img src=""><br/>
+  <img src="https://gyazo.com/fce3f920b20f3fdae472ec9b145b3fb8.png" height=200>
+  <img src="https://gyazo.com/0b9a7a31b4a7c8f042f5c8ec97e1cdb2.png" height=200>
+  <br/>
   ランダムに表示されるWikipediaページ
 </blockquote>
 
@@ -127,7 +139,8 @@ GyaTVにおまかせページを表示するJSのURLを登録しておけば、
 これをGyaTVで表示することによって単語力を上げようとしています。
 
 <blockquote>
-  <img src="https://gyazo.com/939edb279fae755396c635dfbb356fa7.png" width=200><br/>
+  <!-- <img src="https://gyazo.com/939edb279fae755396c635dfbb356fa7.png" width=300><br/> -->
+  <img src="https://gyazo.com/177f9a39f38d0912a6e2eedbde6609ed.png" width=300><br/>
   「inundate(洪水)」
 </blockquote>
 
@@ -138,8 +151,8 @@ Google画像検索を行なうと以下のような写真ばかり出てきま�
 どうやらこの単語は「卒業式」で使われるらしいということがわかります。
 
 <blockquote>
-  <img src="https://gyazo.com/939edb279fae755396c635dfbb356fa7.png" width=200><br/>
-  「convocaton」
+  <img src="https://gyazo.com/be1a0d5bb9638e52abceab8e1970fd3a.png" width=300><br/>
+  「convocation」
 </blockquote>
 
 <h3>ニュースの表示</h3>
@@ -169,17 +182,12 @@ GyaTVページはWeb上にあってどこからでも見えますから、
 <h3>スライドショー</h3>
 
 GyaTVでは、登録したURLがランダムに表示されますが、
-http://GyaTV.com/masui?o=seqのようにオプションを指定すると
-リストした順番のとおりにページを表示できます。
+<a href="http://GyaTV.com/tower?play=seq">http://GyaTV.com/tower?play=seq</a>
+のようにオプションを指定するとリストした順番のとおりにページを表示できます。
 
-旅の写真を並べてさりげなく自慢したい場合や、
+旅の写真を順番に表示したい場合や、
 スライド的に情報を伝えたいような場合はページの順番が大事になるので、
 このオプションをつけて表示するのが良いでしょう。
-
-<blockquote>
-  <img src="GyaTV.com/photos/abc?order=seq"><br/>
-  スライドを決まった順番で表示する
-</blockquote>
 
 <h3>情報通知</h3>
 
@@ -206,11 +214,6 @@ URLの後に数字を書いておけば表示する秒数を指定できます�
 きちんと秒数指定しておけば、
 YouTubeなどで音楽や動画を順番に表示させることもできます。
 
-<blockquote>
-  <img src=""><br/>
-  表示秒数の指定例
-</blockquote>
-
 <h3>置くだけ再生</h3>
 
 AndroidスマホやタブレットにはNFCリーダが登載されており、
@@ -221,6 +224,11 @@ Androidの場合、端末をタグに近付けることによってアプリを�
 この機能を利用すると、
 タブレットやスマホを特定の場所に置くだけで
 スライドショー/予定表/時計などを表示できるので便利です。
+
+<blockquote>
+  <img src=""><br/>
+  (写真) 置くだけ再生しているところ
+</blockquote>
 
 <h2>自動表示で気付くこと</h2>
 
