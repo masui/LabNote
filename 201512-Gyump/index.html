@@ -94,46 +94,21 @@ li { font-weight: bold; }
   自分用の短い名前をカジュアルにつけてブックマークとして活用できる
   Gyumpというサービスを紹介します。
 
-<!--
-「http://.../masui/買い物」みたいなURLを使うようにすれば忘れないし便利である
+  <h2>Gyump: 柔軟なURL短縮サービス</h2>
 
-クラウド上のブックマークを使えばいいのだが、
-簡単にアクセスできるサービスが無い気がするし、
-メモを共有するために使われているのがほとんどである
--->
+  Gyumpは任意の長いURLをユーザが定義した短いURLに変換するサービスです。
+  URL短縮サービスのひとつである
+  <code>goo.gl</code>
+  に
+  <code>http://pitecan.com/</code>
+  を登録すると
+  <code>http://goo.gl/jx7VZy</code>
+  のようなURLが利用できるようになりますが、
+  これを<code>curl</code>コマンドで確認してみると、
+  以下のようなHTMLとステータス301(Moved Permanently)が返ってくるのがわかります。
 
-<h2>Gyump: URL短縮サービス</h2>
-
-Gyumpは
-任意の長いURLをユーザが定義した短いURLに変換するサービスです。
-
-このようなサービスとして
-TinyURL、Bit.ly, Goo.gl
-などが既に広く使われています。
-
-これらのサービスを利用すると、
-<code>http://pitecan.com/</code> のようなURLが
-<code>http://goo.gl/jx7VZy</code>
-<code>http://bit.ly/1LnYzAt</code>
-のような短いURLに変換され、これらのURLにアクセスすると以下のようなHTMLが返ってきます。
-
-<p></p>
-
-たとえば
-<code>goo.gl</code>
-に
-<code>http://pitecan.com/</code>
-を登録すると
-<code>http://goo.gl/jx7VZy</code>
-のようなURLが利用できるようになります。
-
-<code>curl</code>
-コマンドで確認してみると、
-以下のように
-「Moved Permanently」(ステータス301)が返ってくるのがわかります。
-
-<blockquote>
-  <pre>
+  <blockquote>
+    <pre>
     % curl -w '[%{http_code}]\n' http://goo.gl/jx7VZy
     &lt;HTML>
     &lt;HEAD>
@@ -145,124 +120,130 @@ TinyURL、Bit.ly, Goo.gl
     &lt;/BODY>
     &lt;/HTML>
     [301]
-  </pre>
-</blockquote>
+    </pre>
+  </blockquote>
 
-これらのサービスは短い名前と長い名前の対応データベースを保持しており、
-短い名前でアクセスされると上記のようなHTMLを返すという単純な仕組みですから、
-同様のものを作るのは簡単です。
+  Goo.glその他サービスは
+  短い名前と長い名前の対応データベースを保持しており、
+  短い名前でアクセスされると上記のようなHTMLとステータスコードを返すという単純な仕組みですから、
+  同様のものを作るのは簡単です。
 
-<h2>Gyump</h2>
+  <p></p>
 
-Gyumpは自由な名前でURLを登録して別の名前でアクセスできるサービスです。
+  Gyumpは、
+  ユーザが指定した名前を使って任意のURLにアクセスできるようにするサービスです。
 
-たとえば秋葉原に行く用事があったとき、
-行先を示す....のような長いURLに
-Gyump.com/sd/map
-のような短い名前でアクセスすることができます。
+  たとえば「sd」というIDをもつユーザが
+  東京駅の地図を示すURLに「map」という名前でアクセスしたいとき、
+  http://gyump.com/sd/map
+  というURLが利用できるようにするというものです。
 
-登録は簡単で
-Gyump.com/sd/map!
-のような「!」つきのURLにアクセスすると
-以下のような登録画面が出るので、
-必要情報を入力すれば
-bit.ly
-と同じように短縮URLが使えるようになります。
+  <!--
+  たとえば秋葉原に行く用事があったとき、
+  行先を示す....のような長いURLに
+  Gyump.com/sd/map
+  のような短い名前でアクセスすることができます。
+  
+  登録は簡単で
+  Gyump.com/sd/map!
+  のような「!」つきのURLにアクセスすると
+  以下のような登録画面が出るので、
+  必要情報を入力すれば
+  bit.ly
+  と同じように短縮URLが使えるようになります。
+  -->
 
-<blockquote>
-  登録の図
-</blockquote>
+  既存の短縮サービスと異なり、
+  Gyump.com以下の名前は完全に任意なので、
+  自分のID(e.g. <code>sd</code>)と
+  短い名前(e.g. <code>map</code>)として
+  任意のものを利用できます。
 
-既存の短縮サービスと異なり、
-Gyump.com以下の名前は完全に任意なので、
-自分のID(e.g. <code>SD</code>)と
-短い名前(e.g. <code>map</code>)を
-使うようにすれば、
+  <!--  
+      Gyump.com/sd/
+      のようなURLにアクセスすると
+      Gyump.com/sd/map, 
+      Gyump.com/sd/todo,
+      などがリストされます。
+    -->
 
-Gyump.com/sd/
-のようなURLにアクセスすると
-Gyump.com/sd/map, 
-Gyump.com/sd/todo,
-などがリストされます。
+  <p></p>
 
-<blockquote>
-  登録されたページのリスト
-</blockquote>
+  何も登録されていない状態で
+  Gyump.com/sd/
+  にアクセスすると、以下のように登録フォームだけが表示されます。
 
-Gyump.com/sd/maps/akiba
+  <blockquote>
+    <img src="https://gyazo.com/6203b76d3b1a326f75dcf02be744752f.png" width=400><br/>
+    sd.gyamp.comの初期状態
+  </blockquote>
 
-のように階層的に扱うこともできます。
-この場合、
-Gyump.com/sd/maps/akiba
-Gyump.com/sd/maps/shibuya
-のような名前を登録し、
-Gyump.com/sd/maps/
-で地図のリストを見ることができます。
+  ここで以下のように「map」というキーワードと
+  東京駅の地図のURLを入力して登録すると、
+  東京駅のURLが「map」という名前で登録され、
 
-「SD」「map」のような名前は自由に選択できますし、
-登録URLを変更することもできるので、
-様々な使い方が可能です。
+  <!--
+      <blockquote>
+	<img src="https://gyazo.com/a3a8e9a945c47de17655d066b16512df.png" width=400><br/>
+	東京駅を登録
+      </blockquote>
+      -->
 
-<p></p>
+  登録されたURLが以下のようにリストされます。この状態では
+  http://sd.gyump.com/map
+  というURLで東京駅の地図にアクセスすることができます。
 
-何も登録されていない状態で
-Gyump.com/sd/
-にアクセスすると、登録フォームだけが表示されます。
+  <blockquote>
+    <img src="https://gyazo.com/91c7e5edd864175eb3b8f668671d4bd5.png" width=400><br/>
+    東京駅を登録後のリスト
+  </blockquote>
 
-<blockquote>
-  <img src="https://gyazo.com/6203b76d3b1a326f75dcf02be744752f.png" width=400><br/>
-  sd.gyamp.comの初期状態
-</blockquote>
+  ここでリスト中の「map」をクリックすると編集モードになりますが、
+  http://sd.gyump.com/map!
+  のような「!」つきのURLにアクセスすると、
+  直接以下のような編集ページに飛ぶことができます。
 
-ここで以下のように「map」というキーワードと
-東京駅の地図のURLを入力して登録すると、
+  <blockquote>
+    <img src="https://gyazo.com/13fdb8829bd45408527590edf9e956bb.png" width=400><br/>
+    編集フォーム
+  </blockquote>
 
-<!--
-<blockquote>
-  <img src="https://gyazo.com/a3a8e9a945c47de17655d066b16512df.png" width=400><br/>
-  東京駅を登録
-</blockquote>
--->
+  http://sd.gyump.com/map
+  のようなURLをブラウザに入力するのは面倒ですが、
+  Firefoxなどでは検索窓をカスタマイズできるようになっているので、
+  Gyumpを検索システムとして登録しておけば便利です。
 
-登録されたURLが以下のようにリストされます。この状態では
-http://sd.gyump.com/map
-というURLで東京駅の地図にアクセスすることができます。
+  <blockquote>
+    <img src="https://gyazo.com/a0a2a092d1cc878ad8354672c0dc605e.png" width=400><br/>
+    Firefoxの検索エンジン
+  </blockquote>
 
-<blockquote>
-  <img src="https://gyazo.com/91c7e5edd864175eb3b8f668671d4bd5.png" width=400><br/>
-  東京駅を登録後のリスト
-</blockquote>
+  <blockquote>
+    <img src="https://gyazo.com/b7fec12e38388216bb3e16443640c293.png" width=400><br/>
+    デフォルト検索エンジンとして「sd.gyamp.com」を指定
+  </blockquote>
 
-http://sd.gyump.com/map!
-のようなURLにアクセスすると、
-直接以下のような登録ページに飛ぶことができます。
+  こうすると
+  検索枠に「map」と入力するだけで東京駅の地図を開くことができます。
+  Gyumpに登録されていない文字列を入力すると
+  Google検索するようになっているので、
 
-<blockquote>
-  <img src="https://gyazo.com/13fdb8829bd45408527590edf9e956bb.png" width=400><br/>
-  登録フォーム
-</blockquote>
+  <p></p>
+  Gyump.com/sd/maps/akiba
+      
+  のように階層的に扱うこともできます。
+  この場合、
+  Gyump.com/sd/maps/akiba
+  Gyump.com/sd/maps/shibuya
+  のような名前を登録し、
+  Gyump.com/sd/maps/
+  で地図のリストを見ることができます。
+      
+  「SD」「map」のような名前は自由に選択できますし、
+  登録URLを変更することもできるので、
+  様々な使い方が可能です。
 
-http://sd.gyump.com/map
-のようなURLをブラウザに入力するのは面倒ですが、
-Firefoxなどでは検索窓をカスタマイズできるようになっているので、
-Gyumpを検索システムとして登録しておけば便利です。
-
-<blockquote>
-  <img src="https://gyazo.com/a0a2a092d1cc878ad8354672c0dc605e.png" width=400><br/>
-  Firefoxの検索エンジン
-</blockquote>
-
-<blockquote>
-  <img src="https://gyazo.com/b7fec12e38388216bb3e16443640c293.png" width=400><br/>
-  デフォルト検索エンジンとして「sd.gyamp.com」を指定
-</blockquote>
-
-こうすると
-検索枠に「map」と入力するだけで東京駅の地図を開くことができます。
-Gyumpに登録されていない文字列を入力すると
-Google検索するようになっているので、
-
-<h2>Gyumpの応用</h2>
+  <h2>Gyumpの応用</h2>
 
 <h3>地図</h3>
 
