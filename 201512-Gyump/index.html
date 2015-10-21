@@ -3,16 +3,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>コロンブス日和 - Gyamp</title>
+<title>コロンブス日和 - Gyump</title>
 <style type="text/css">
 a { text-decoration: none; }
+li { font-weight: bold; }
 </style>
 </head>
 <body style="background-color:#f8f8f8">
 
-<!-- div style="width:400pt"  -->
+<div style="width:400pt">
 
-<h1>コロンブス日和 - Gyamp</h1>
+<h1>コロンブス日和 - Gyump</h1>
 
 世界中のあらゆるものに階層的に名前がついている状態になりつつあるのはすごいことですが、
 そのためにはURLが必然的に長くなるわけで、
@@ -22,7 +23,8 @@ GoogleMapsのURLなんて絶望的に長くなってしまいます。
 以下のような対策が広く使われています。
 
 <ul>
-  <li>URLをブックマークする</li>
+<li>URLをブックマークする</li>
+<p></p>
 
   あらゆる情報の中から自分が使うものだけ覚えておくために
   「ブックマーク機能」がよく使われています。
@@ -94,10 +96,11 @@ Gyumpというサービスを紹介します。
 
 <h2>Gyump: URL短縮サービス</h2>
 
-Gyampは
-ユーザが定義した短いURLを長いURLに変換するサービスです。
+Gyumpは
+任意の長いURLをユーザが定義した短いURLに変換するサービスです。
 このようなサービスとして
 TinyURL、Bit.ly, Goo.gl
+などが既に広く使われています。
 
 これらのサービスを利用すると、
 <code>http://pitecan.com/</code> のようなURLが
@@ -105,35 +108,40 @@ TinyURL、Bit.ly, Goo.gl
 <code>http://bit.ly/1LnYzAt</code>
 のような短いURLに変換され、これらのURLにアクセスすると以下のようなHTMLが返ってきます。
 
-たとえばcurlで
-<code>http://goo.gl/jx7VZy</code>
+<p></p>
 
-<pre>
-% curl http://goo.gl/jx7VZy
-<HTML>
-<HEAD>
-<TITLE>Moved Permanently</TITLE>
-</HEAD>
-<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
-<H1>Moved Permanently</H1>
-The document has moved <A HREF="http://pitecan.com/">here</A>.
-</BODY>
-</HTML>
-</pre>
+たとえば
+<code>goo.gl</code>
+に
+<code>http://pitecan.com/</code>
+を登録すると
+<code>http://goo.gl/jx7VZy</code>
+のようなURLが利用できるようになります。
+
+<code>curl</code>
+コマンドで確認してみると、
+以下のように
+「Moved Permanently」(ステータス301)が返ってくるのがわかります。
+
+<blockquote>
+  <pre>
+    % curl -w '[%{http_code}]\n' http://goo.gl/jx7VZy
+    &lt;HTML>
+    &lt;HEAD>
+    &lt;TITLE>Moved Permanently&lt;/TITLE>
+    &lt;/HEAD>
+    &lt;BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+    &lt;H1>Moved Permanently&lt;/H1>
+    The document has moved &lt;A HREF="http://pitecan.com/">here&lt;/A>.
+    &lt;/BODY>
+    &lt;/HTML>
+    [301]
+  </pre>
+</blockquote>
 
 これらのサービスは短い名前と長い名前の対応データベースを保持しており、
-短い名前でアクセスされると上記のようなHTMLを返すという単純な仕組みにですから、
+短い名前でアクセスされると上記のようなHTMLを返すという単純な仕組みですから、
 同様のものを作るのは簡単です。
-
-<!--
-似たような用途に使うとき困る
-MapのURLを短くすることはできますが、
-別の場所のURLを短くすると別の短いURLが生成されるため、
-それを覚えておかなければなりません。
-
-計算機に覚えておくのであれば
-名前が多少長くても短くても関係ありません。
--->
 
 <h2>Gyump</h2>
 
@@ -141,11 +149,11 @@ Gyumpは自由な名前でURLを登録して別の名前でアクセスできる
 
 たとえば秋葉原に行く用事があったとき、
 行先を示す....のような長いURLに
-Gyump.com/SD/map
+Gyump.com/sd/map
 のような短い名前でアクセスすることができます。
 
 登録は簡単で
-Gyump.com/SD/map!
+Gyump.com/sd/map!
 のような「!」つきのURLにアクセスすると
 以下のような登録画面が出るので、
 必要情報を入力すれば
@@ -162,24 +170,24 @@ Gyump.com以下の名前は完全に任意なので、
 短い名前(e.g. <code>map</code>)を
 使うようにすれば、
 
-Gyump.com/SD/
+Gyump.com/sd/
 のようなURLにアクセスすると
-Gyump.com/SD/map, 
-Gyump.com/SD/todo,
+Gyump.com/sd/map, 
+Gyump.com/sd/todo,
 などがリストされます。
 
 <blockquote>
   登録されたページのリスト
 </blockquote>
 
-Gyump.com/SD/maps/akiba
+Gyump.com/sd/maps/akiba
 
 のように階層的に扱うこともできます。
 この場合、
-Gyump.com/SD/maps/akiba
-Gyump.com/SD/maps/shibuya
+Gyump.com/sd/maps/akiba
+Gyump.com/sd/maps/shibuya
 のような名前を登録し、
-Gyump.com/SD/maps/
+Gyump.com/sd/maps/
 で地図のリストを見ることができます。
 
 「SD」「map」のような名前は自由に選択できますし、
@@ -189,7 +197,7 @@ Gyump.com/SD/maps/
 <p></p>
 
 何も登録されていない状態で
-Gyump.com/SD/
+Gyump.com/sd/
 にアクセスすると、登録フォームだけが表示されます。
 
 <blockquote>
@@ -208,7 +216,7 @@ Gyump.com/SD/
 -->
 
 登録されたURLが以下のようにリストされます。この状態では
-http://SD.gyump.com/map
+http://sd.gyump.com/map
 というURLで東京駅の地図にアクセスすることができます。
 
 <blockquote>
@@ -216,7 +224,7 @@ http://SD.gyump.com/map
   東京駅を登録後のリスト
 </blockquote>
 
-http://SD.gyump.com/map!
+http://sd.gyump.com/map!
 のようなURLにアクセスすると、
 直接以下のような登録ページに飛ぶことができます。
 
@@ -225,7 +233,7 @@ http://SD.gyump.com/map!
   登録フォーム
 </blockquote>
 
-http://SD.gyump.com/map
+http://sd.gyump.com/map
 のようなURLをブラウザに入力するのは面倒ですが、
 Firefoxなどでは検索窓をカスタマイズできるようになっているので、
 Gyumpを検索システムとして登録しておけば便利です。
@@ -245,7 +253,7 @@ Gyumpを検索システムとして登録しておけば便利です。
 Gyumpに登録されていない文字列を入力すると
 Google検索するようになっているので、
 
-<h2>Gyampの応用</h2>
+<h2>Gyumpの応用</h2>
 
 <h3>地図</h3>
 
@@ -334,6 +342,7 @@ Firefoxなどのブラウザに登録することができます。
 </body>
 </html>
 
+<!--
 [[[便利な場合]]]
 
 短期的によく使うものも考えられる
@@ -373,3 +382,4 @@ gyamp.com/masui/rfid/
   Firefoxの検索プラグイン
 </blockquote>
 
+-->
