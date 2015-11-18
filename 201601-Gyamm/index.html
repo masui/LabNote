@@ -10,6 +10,8 @@
       a { text-decoration: none; }
       li.bold { font-weight: bold; }
       div.body { width:400pt; }
+      div.left { float:left; width:10%; font-weight:bold;}
+      div.right { width:50%;}
     </style>
   </head>
   
@@ -89,7 +91,6 @@
 	<img src="https://gyazo.com/94f7c86aa2094e9c6b417cbfa8f47dfb.png" width=500><br/>
 	Gyamm
       </blockquote>
-      
 
       Gyammでは
       GMailのようなWebメールシステムと異なり、
@@ -232,15 +233,36 @@
       <h3>SMTPサーバの実装</h3>
 
       Gyamm.comに対してメールを送れるようにするためにSMTPサーバを動かしています。
-      SMTPの仕様はRFCxxxxで定義されています。
-
-      SMTPサーバは以下のような動作をします。
+      SMTPの仕様は
+      <a href="https://tools.ietf.org/html/rfc821">RFC821</a>
+      で定義されており、
+      SMTPサーバには25番ポートを利用して
+      以下のように対話的にアクセスすることができます。
 
       <blockquote>
 	<pre>
-	  % telnet gyamm.com 25
-	  HELO
-	  FROM
+	  % <b>telnet gyamm.com 25</b>
+	  Trying 133.242.135.184...
+	  Connected to gyamm.com.
+	  Escape character is '^]'.
+	  220 gyamm.com ESMTP GYAMM
+	  <b>HELO example.com</b>
+	  250 gyamm.com
+	  <b>MAIL FROM: masui@pitecan.com</b>
+	  250 ok
+	  <b>RCPT TO: masui@example.com</b>
+	  250 ok
+	  <b>DATA</b>
+	  354 send the mail data, end with .
+	  <b>a
+	  b
+	  c
+	  .</b>
+	  250 ok
+	  <b>QUIT</b>
+	  221 Bye
+	  Connection closed by foreign host.
+	  %
 	</pre>
       </blockquote>
 
@@ -248,15 +270,17 @@
       正式なSMTPサーバはメール転送などの処理をする必要がありますが、
       Gyammサーバはメールを受け取ってデータを処理するだけで良いので
       実装はそれほど複雑ではありません。
+      以下のようなコマンドの一部を実装しておけば大丈夫です。
 
       <blockquote>
-      <table border>
-	<tr><td>HELO</td><td>開始</td></tr>
-	<tr><td>MAIL</td><td>送信アドレスを指定</td></tr>
-	<tr><td>RCPT</td><td>受信アドレスを指定</td></tr>
-	<tr><td>DATA</td><td>メッセージ本文を指定</td></tr>
-	<tr><td>QUIT</td><td>切断</td></tr>
-      </table>
+	<div style="border-width:1; border-style:solid; padding:2; background-color:#fff;">
+	  <div class="left">HELO</div><div class="right">通信開始</div>
+	  <div class="left">MAIL</div><div class="right">送信アドレスを指定</div>
+	  <div class="left">RCPT</div><div class="right">受信アドレスを指定</div>
+	  <div class="left">DATA</div><div class="right">メッセージ本文を指定</div>
+	  <div class="left">QUIT</div><div class="right">通信切断</div>
+	</div>
+	SMTPの仕様の一部
       </blockquote>
 
       <h3>メールをHTMLに変換</h3>
@@ -293,13 +317,12 @@
       また、パソコン通信などの非インターネットの世界では
       タイトルや本文にShiftJISの日本語が利用されていることが多く、
       メールの世界はかなり混沌とした状態になっていました。
-      
-      <h4>MIMEの登場</h4>
-      
+
+      <p/>
       1990年ごろまではそういう状況が続いていたのですが、
-      1992に
-      CMUのNathaniel S. Borensteinらによって
-      MIME規格がRFCxxxxとして制定されたおかげで
+      1996年にMIME規格が
+      <a href="https://tools.ietf.org/html/rfc2045">RFC2045</a>
+      として制定されたおかげで
       任意の言語をタイトルや本文に利用したり、
       メッセージにファイルを含めたりできるようになりました。
 
@@ -309,15 +332,15 @@
 
       <ul>
 	<li>データ型の指定</li>
-	Content-Type:フィールドでデータ型や文字コードを正確に指定する
+	Content-Type:フィールドでデータ型や文字コードを正確に指定する。
 	<li>データのエンコード</li>
-	画像や文書など任意のデータをテキスト型式に変換する方法を定義
+	画像や文書など任意のデータをテキスト型式に変換する方法を定義。
 	<li>データの階層な構造化</li>
-	マルチパートというデータ型を使って、複数のデータをまとめて扱えるようにしました
+	マルチパートというデータ型で複数のデータをまとめて扱える。
 	複数パートをまとめたデータ全体を、ひとつ上位の一部分とすることもえきるので
-	階層的なデータ構造を表現できます。
+	階層的なデータ構造を表現できる。
 	<li>ヘッダの国際化</li>
-	任意の文字コードの文字列をヘッダで利用できるエンコード方式を定義
+	任意の文字コードの文字列をヘッダで利用できるエンコード方式を定義。
       </ul>
 
       HTMLファイルや画像ファイルは上の方法で
@@ -327,8 +350,7 @@
       MIME内の別パートの画像を参照する特殊なimgタグを利用することにより、
       画像を含むWebページをひとつのHTMLメールとしてMIMEエンコードすることができるようにもなっています。
 
-      <h4>MIMEのデコード</h4>
-
+      <p/>
       Gyaimでは
       MIME型式で送られてきたメールをデコードして、
       人間が読める形に変換しています。
