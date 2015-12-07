@@ -25,14 +25,14 @@
       月間ユニークユーザ1000万人 /
       1日の画像アップロード数70万件 /
       という大規模なWebサービスですが、
-      もともと2007年ごろに
+      もともとは2007年ごろに
       私がコロンブスの卵的な発想で開発した小さなツールが
       大きく育ったものです。
 
       初期のGyazoは
       パソコンのデスクトップを領域選択/キャプチャして
       アップロードする単純なサービスでしたが、
-      最近は画像編集機能/コメント機能/検索機能/ブックマーク機能/チーム機能などが強化され、
+      最近は動画キャプチャ機能/画像編集機能/コメント機能/検索機能/ブックマーク機能/チーム機能などが強化され、
       様々な用途に利用できる便利なツールに進化しています。
 
       <p/>
@@ -46,7 +46,7 @@
       「Gy」で始まるドメインは取得しやすいようです。
 
       <blockquote>
-	<img src="https://gyazo.com/2bdf3a011cfba996c34d6a34fe00c715.png" width=400><br>
+	<img src="https://gyazo.com/2bdf3a011cfba996c34d6a34fe00c715.png" width=450><br>
 	Gyazo.comトップページ
       </blockquote>
 
@@ -70,21 +70,13 @@
 	選択部分が自動的にWebにアップロードされて画像URLが割り当てられる</li>
       </ul>
 
-      <!--
-      従来手法では
-      キャプチャ/切り出し保存/アップロード
-      という3つの手間が必要だったものが
-      ひとつの作業になったことになり、
-      この作業のことを「Gyazoる」と表現します。
-	-->
-
       Gyazoった画像のURLはコピーバッファに保存されるので、
       Gyazoった後ですぐにチャット画面やメールテキストなどに
       URLを貼り付けることができます。
 
       <p/>
       Gyazoにアップロードした画像はWeb上に残るので
-      後で資料などとしてずっと利用できます。
+      後で資料などとして利用できます。
       都合の悪い画像を間違ってアップロードしてしまったような場合は
       削除を依頼すれば消すことができます。
       (後述の「Gyazo Pro」ユーザ(課金ユーザ)は自力で削除が可能です)
@@ -148,8 +140,8 @@
       <h3>Gyazoサーバ</h3>
 
       前述の型式でGyazoサーバに送られたデータは
-      以下のような
-      <code>gyazo.cgi</code>
+      以下のようなRubyスクリプト
+      (<code>gyazo.cgi</code>)
       でデコードできます。
 
       <pre>
@@ -162,7 +154,7 @@
       
       Gyazoアプリは
       HTML標準のフォーム型式でデータを送っているので
-      サーバ側ではこのようなCGIスクリプトや
+      サーバ側ではこのようなスクリプトや
       Ruby on Railsなどを使ってデータを受け取ることができます。
       
       <h2>Gyazoの拡張機能</h2>
@@ -190,18 +182,26 @@
       「EpsonのHMDを試してみてるところ」というコメントを入力しています。
 
       <blockquote>
-	<img src="https://gyazo.com/3e47b6253621b53859bc28650ce643bb.png" width=400><br/>
+	<img src="https://gyazo.com/3e47b6253621b53859bc28650ce643bb.png" width=450><br/>
 	コメントの追加
       </blockquote>
 
       <h3>検索機能</h3>
 
       入力したコメントを使って画像を検索できます。
+      前述の画像や編集後の画像が検索結果に現れています。
 
       <blockquote>
-	<img src="https://gyazo.com/aeeac166ef41fa5bfad27330d385ddbd.png" width=400><br/>
+	<img src="https://gyazo.com/aeeac166ef41fa5bfad27330d385ddbd.png" width=450><br/>
 	「hmd」で検索を行なったところ
       </blockquote>
+
+      <!--
+      <blockquote>
+	<img src="https://gyazo.com/8412f864a1ae9f6eaef9d97b44749277.png" width=450><br/>
+	「ラーメン」で検索を行なったところ
+      </blockquote>
+      -->
       
       <h3>ブックマーク機能</h3>
       
@@ -215,7 +215,7 @@
       コメントとして記録されます。
 
       <blockquote>
-	<img src="https://gyazo.com/32b8c56e383591936e6f8faac350cf12.png" width=400><br/>
+	<img src="https://gyazo.com/32b8c56e383591936e6f8faac350cf12.png" width=450><br/>
 	Software DesignのページをGyazoった結果
       </blockquote>
 
@@ -227,8 +227,8 @@
       「Software」「Design」というコメントがついた画像がリストされています。
       
       <blockquote>
-	<img src="https://gyazo.com/50fb5b2e169f1a8a16ac657fa8923fd4.png" width=400><br/>
-	「Software Design」で検索した結果
+	<img src="https://gyazo.com/50fb5b2e169f1a8a16ac657fa8923fd4.png" width=450><br/>
+	「Software Design」で検索を行なったところ
       </blockquote>
 
       <h3>関連画像検索</h3>
@@ -247,12 +247,12 @@
       関連する画像を芋蔓的に検索できるようにしたものです。
 
       <p/>
-      以下は「3Dプリンタ」というキーワードで検索された画像を選択したものですが、
+      以下は「3Dプリンタ」というキーワードで検索された画像のひとつを選択したものですが、
       関連画像として別の3DプリンタやMaker Faireの画像などが自動的にリストされています。
       これらの関連画像はコメントなどから自動的に計算されます。
 
       <blockquote>
-	<img src="https://gyazo.com/282b31df66beac9c2cb3e6fbedfee5c2.png" width=400>
+	<img src="https://gyazo.com/282b31df66beac9c2cb3e6fbedfee5c2.png" width=450>
       </blockquote>
 
       ここでMaker Faireの画像をクリックすると、
@@ -262,7 +262,7 @@
       Maker Faireに関連する別の画像がリストされています。
 
       <blockquote>
-	<img src="https://gyazo.com/182abd1fb56672edb0da84fadfc352c5.png" width=400>
+	<img src="https://gyazo.com/182abd1fb56672edb0da84fadfc352c5.png" width=450>
       </blockquote>
 
       このようにして関連画像をたどることにより、
@@ -273,7 +273,7 @@
       <h2>Gyazoな一日</h2>
 
       このように、Gyazoを使うと
-      キャプチャしたアプリケーションやURLを記憶できるのに加え、
+      Gyazoった時のアプリケーションやURLを保存して検索できるのに加え、
       IvySearchを使って内容が近い画像を簡単に検索することができるので、
       広い応用が可能です。
 
@@ -282,7 +282,7 @@
       
       <ul>
 	<li>重要メールが来てたのでGMailページをGyazoってコメントに「TODO」と書いておく
-	  (後からIvySearchで「TODO」で検索)</li>
+	  (後から「TODO」で検索できるようになる)</li>
 	<li>新着Facebook記事で見つけた面白いWebページをGyazoって「読み物」というコメントを書いておく</li>
 	<li>勉強したい案件のメモをWiki上で作成し、Gyazoった画像を貼り付けておく</li>
 	<li>WebページをGyazoってプレゼン資料を作る</li>
@@ -293,14 +293,14 @@
 	<li>ついでにIvySearchでみつかった他の読み物も読む</li>
 	<li>Facebookに自分の写真がアップされてるのをみつけたのでGyazoってコメントつけておく</li>
 	<li>新しいラーメン屋の評判をGyazoってWikiに貼っておく</li>
-	<li>明日の出張のために付近のレストランをチェックしておく</li>
+	<li>明日の出張のために付近のレストランをチェックしてGyazoっておく</li>
 	<li>念のため電車の時刻をGyazoっておく</li>
 	<li>Skypeパスワードを忘れたので「Skype パスワード」でGyazo検索した後、
 	  <a href="http://episopass.com/masui/Skype123456">EpisoPassページ</a>を使ってパスワードを思い出す</li>
 	<li>請求書作成が必要だったので古い請求書をIvySearchして修正して印刷</li>
-	<li>TODO案件をチェックした後帰宅</li>
+	<li>TODO案件を検索してチェックした後帰宅</li>
 	<li>免許証のコピーが必要なサービスに対してデジカメ写真をGyazoってメールで送付</li>
-	<li><a href="http://peatix.com/?lang=ja">Peatix</a>のチケットQRコードをGyazoっておく</li>
+	<li><a href="http://peatix.com/?lang=ja">Peatix</a>のチケットとして使われるQRコードをGyazoっておく</li>
 	<li>美味しかったワインのラベルをGyazoってコメントを書いておく</li>
       </ul>
 
@@ -357,7 +357,7 @@
 
       これまで紹介した各種の小さなシステムや
       これから紹介するシステムも、
-      ビジネスに発展させられるものが有れば良いなと思います。
+      ビジネスに発展させられるものが有れば良いなと思っています。
 
     </div>
   </body>
