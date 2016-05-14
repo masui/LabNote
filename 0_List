@@ -9,17 +9,28 @@
 5 2016/3  Gyaki
 6 2016/4  DynaicMacro
 7 2016/5  Gyaim
+8 2016/6  EpisoPass
 
 ■ これからの予定
 
-8 2016/6 EpisoPass
+9  ExpandHelp
+   コロンブスではないけど
+   というかre_expand
+   展開すると面白いことがいろいろ!
+10 Gear
+11 Gyazz?
+   テーブル機能
+12 Snapなんとか
+   SmoothSnapは悪くない
 
-9 Gyazz?
- テーブル機能
-10 Gear?
+
 11 Goldfish?
+
 Dshelf?
 IvySearch?
+SnapEditor?
+SnapScroll
+HashInfo?
 
 じゃんけん/PPM
 Gear
@@ -28,10 +39,6 @@ Gyazz
 DShelf
  eBookJapanで出てからか
 
-ExpandHelp
-IvySearch
-Goldfish
 SDraw
-HashInfo
 
 QuickML - Gyaml
