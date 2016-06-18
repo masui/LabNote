@@ -10,23 +10,44 @@
 6 2016/4  DynaicMacro
 7 2016/5  Gyaim
 8 2016/6  EpisoPass
+9 2016/7  ExpandHelp
 
 ■ これからの予定
 
-9  ExpandHelp
-   コロンブスではないけど
-   というかre_expand
-   展開すると面白いことがいろいろ!
-10 Gear
-11 Gyazz?
+10 ズーミングインタフェース
+   名前をつけられるか?
+   Filter & Zoom
+   ZoomVis
+   Zoomir
+   * SelZoom
+   filt
+   * rubzoom
+   flexiZoom
+   * scrollzoom
+     イイんじゃないか?
+   * DragZoom
+     こちらの方がいい
+
+10 LensBar と 曖昧検索
+
+10 SmoothSnap
+   微調整を簡単にするところがコロンブス的
+   jQueryで頑張る?
+10 RainbowZoomer ?
+10 LindaでIoT
+   共有空間はコロンブス的だがShokaiが作ったところが問題
+
+10 ★ Gear
+11 ★ Gyazz?
    テーブル機能
+   
 12 Snapなんとか
    SmoothSnapは悪くない
-
 
 11 Goldfish?
 
 Dshelf?
+
 IvySearch?
 SnapEditor?
 SnapScroll
