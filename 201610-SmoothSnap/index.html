@@ -247,32 +247,32 @@
       スライダのノブを動かすだけで秒単位で時刻を設定することができます。
       
       <blockquote>
-	<img src="https://gyazo.com/908b1e542fa6e0288b8d9aaf8edb59dc.png"><br>
+	<img src="http://masui.org/cd08b4a020bc91c4bc6158aeaa023b22.png"></br>
 	初期状態
       </blockquote>
       
       <blockquote>
-	<img src="https://gyazo.com/40d5d65c98293ade630886f26711866b.png"><br>
+	<img src="http://masui.org/099142b98d2dc7eaeaadf18a4f481d37.png"><br>
 	1秒単位の設定
       </blockquote>
       
       <blockquote>
-	<img src="https://gyazo.com/2376cd2696745fa99aa75d0d4ea30a10.png"><br>
+	<img src="http://masui.org/b8bc884af935deb967eccfc4c3467933.png"><br>
 	10秒単位の設定
       </blockquote>
       
       <blockquote>
-	<img src="https://gyazo.com/86215c926e6d1f415d537b5ad0ab24ba.png"><br>
+	<img src="http://masui.org/126a98105f37e1dfcd1ae9a7e5769f44.png"><br>
 	1分単位の設定
       </blockquote>
       
       <blockquote>
-	<img src="https://gyazo.com/17ff5a6fa23fd5bc66220e0b1fd5b90d.png"><br>
+	<img src="http://masui.org/d7f6343dfb2915b2834b979f557add93.png"><br>
 	10分単位の設定
       </blockquote>
       
       <blockquote>
-	<img src="https://gyazo.com/f19cc7c16048d9460782b37bdafc57c8.png"><br>
+	<img src="http://masui.org/91ac4b46677c2970bfe6db3304130920.png"><br>
 	1時間単位の設定
       </blockquote>
       
@@ -289,42 +289,53 @@
       
       <h3>大きな文書のスクロール</h3>
       
-      大きな文書が1ページのWebページになっているとき、その構造を把握し
-      ながらブラウジングを行なうことは難しい。図\ref{peephole}は、著者
-      が執筆した30個のWeb記事を並べてひとつのページにしたものの一部を
-      ブラウザで表示している様子を示している。ブラウザ画面では大きな
-      Webページのごく一部しか見えていないため、スクロールを行ないなが
-      らページ全体の構造を把握するのはかなり難しい。
+      大きな文書が1ページのWebページになっているとき、
+      その構造を把握しながらブラウジングを行なうのは大変です。
       
-      右側の画面では章タイトル(「第28回...」)が見えているので大体どの
-      あたりをブラウズしているのかがわかるが、左側の画面はタイトルが見
-      えていないので、ブラウザ画面を見るだけではどの章なのかがわからず、
-      上下にスクロールしてはじめて位置がわかることになる。
+      下の図は、私が昔書いた30個のWeb記事を並べてひとつのページにしたものの一部を
+      ブラウザで表示している様子を示しています。
+      ブラウザ画面では大きな Webページのごく一部しか見えていないため、
+      スクロールを行ないながらページ全体の構造を把握するのはかなり困難です。
+
+      <blockquote>
+	<img src="http://masui.org/571076e09e33a82e710ed30a8653952f.png" width=500>
+      </blockquote>
       
-      \includegraphics[width=2.0\columnwidth]{figures/peephole.eps}
-      \caption{大きなWebページのブラウジング}
+      右側の画面では章タイトル(「第28回...」)が見えているので
+      大体どのあたりをブラウズしているのかがわかりますが、
+      左側の画面はタイトルが見えていないので、
+      ブラウザ画面を見るだけではどの章なのかがわからず、
+      上下にスクロールしてはじめて位置がわかることになります。
+
+      <p></p>
+      SmoothSnapを利用して同じページをブラウジングしている様子を下に示します。
+      スクロールバーのノブをドラッグしたとき、
+      ノブの移動量が小さい場合は通常の場合と同様にスクロールが行なわれますが、
+      移動量が大きい場合は章や節の先頭でスクロールがスナッピングするため、
+      常に<code>&lt;h2></code>や<code>&lt;h3></code>
+      が画面のトップに位置することになり、
+      全体的にどういう章や節で構成されているのかを
+      容易にブラウズして把握することが可能になっています。
+
+      <blockquote>
+	<img src="http://masui.org/f67a518d1a593ed163dba50137c7686e.png" width=400><br>
+	初期状態
+      </blockquote>
       
-      SmoothSnapを利用して同じページをブラウジングしている様子を図
-      {scrollbar}に示す。スクロールバーのノブをドラッグしたとき、ノブ
-      の移動量が小さい場合は通常の場合と同様にスクロールが行なわれるが、
-      移動量が大きい場合は章や節の先頭でスクロールがスナッピングするた
-      め、常に\texttt{h2}や\texttt{h3}が画面の上部に位置することに
-      なり、全体的にどういう章や節で構成されているのかを容易にブラウズ
-      して把握することが可能になっている。
+      <blockquote>
+	<img src="http://masui.org/57c5a334546c3e3145a447ac88da8189.png" width=400><br>
+	わずかに下にドラッグした状態
+      </blockquote>
 
-      \includegraphics[width=.90\columnwidth]{figures/scroll0.eps}\\
-      (a) 初期状態
+      <blockquote>
+	<img src="http://masui.org/4644cedd62c7213c567b9dd5b0039508.png" width=400><br>
+	もう少しドラッグした状態。h3にスナッピングしている。
+      </blockquote>
       
-      \includegraphics[width=.90\columnwidth]{figures/scroll1.eps} \\
-      (b) わずかに下にドラッグした状態
-
-      \includegraphics[width=.90\columnwidth]{figures/scroll2.eps} \\
-      (c) もう少しドラッグした状態。\texttt{h3}にスナッピングしている。
-
-      \includegraphics[width=.90\columnwidth]{figures/scroll3.eps} \\
-      (d) かなり下方までドラッグした状態。\texttt{h2}にスナッピングしている。
-
-      ドラッグによるスナッピング
+      <blockquote>
+	<img src="http://masui.org/cba3080eeeab5ee664c60b21b95b4dd2.png" width=400><br>
+	かなり下方までドラッグした状態。h2にスナッピングしている。
+      </blockquote>
 
       <h3>議論</h3>
 
