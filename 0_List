@@ -11,50 +11,37 @@
 7 2016/5  Gyaim
 8 2016/6  EpisoPass
 9 2016/7  ExpandHelp
+10 2016/8 DragZoom
+11 2016/9 Gear
+12 2016/10 SmoothSnap
+13 2016/11 廃れるバックグラウンド
 
 ■ これからの予定
 
-10 ズーミングインタフェース
-   名前をつけられるか?
-   Filter & Zoom
-   ZoomVis
-   Zoomir
-   * SelZoom
-   filt
-   * rubzoom
-   flexiZoom
-   * scrollzoom
-     イイんじゃないか?
-   * DragZoom
-     こちらの方がいい
-
-10 LensBar と 曖昧検索
-
-10 SmoothSnap
-   微調整を簡単にするところがコロンブス的
-   jQueryで頑張る?
-10 RainbowZoomer ?
-10 LindaでIoT
+14 共有空間通信
+   プロセス間通信は難しいというのが定説だがそうではない!
+     会話が難しいなんていう人はあまりいない
+   LindaでIoT
    共有空間はコロンブス的だがShokaiが作ったところが問題
 
-10 ★ Gear
-11 ★ Gyazz?
-   テーブル機能
+14 Goldfish
+
+15 つまらないパズル
+   魑魅魍魎とか
    
-12 Snapなんとか
-   SmoothSnapは悪くない
+16 わかるらんど
 
-11 Goldfish?
+17 dshelf?
 
-Dshelf?
+18 Gyazz
+   
+15 HashInfo
+
+Dshelf
 
 IvySearch?
-SnapEditor?
-SnapScroll
-HashInfo?
 
 じゃんけん/PPM
-Gear
 Gyazz
 
 DShelf
