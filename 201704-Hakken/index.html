@@ -304,11 +304,12 @@
       
       <blockquote>
         <img src="https://gyazo.com/df389d5c9189c508a173b2f72bd32779.png" width=300><br/>
-	乱数の足し算のプログラム
+	乱数を何回か足した結果のヒストグラムを計算
       </blockquote>
 
       <blockquote>
         <img src="https://gyazo.com/edbeca3c66ed7606e6fcc27dbf9b5bc8.png" width=300><br/>
+	計算結果
       </blockquote>
 
       <h3>乱数の掛け算</h3>
@@ -318,7 +319,8 @@
       実は
       乱数を何度も掛け算したものは
       以下のような「冪分布」になります。
-
+      下の図では、リニアスケールで青い点を、対数スケールで赤い点を表示しています。
+      
       <blockquote>
         <img src="https://gyazo.com/cde4f0ab8f82e92fbcb126b4d926523f.png" width=300><br/>
 	乱数の掛け算のプログラム例
@@ -338,10 +340,12 @@
       もっと現実的な場合について考えてみます。
       100万円の資金を持っているとき、
       運によってそれが2割増えたり2割減ったりすることが繰り返されるとどうなるでしょうか。
+
+      これをシミュレートするプログラムを実行すると
 	  
       <blockquote>
         <img src="https://gyazo.com/2f35504da12c290e981b23c02eeb4be7.png" width=300><br/>
-	1.2をかける場合と0.8をかける場合
+	運によって資金が少し増えたりへったりするシミュレーション結果
       </blockquote>
       
       世の中にはちょっと得する機会もちょっと損する機会も沢山ありますが、
@@ -382,6 +386,11 @@
 	http
 	戦争ゲームのプログラム
       <p/>
+
+      <blockquote>
+	<img src="https://gyazo.com/30644f75a71ce2744d47c9e2be6cfae7.png" width=240><br/>
+      	勝負の途中
+      </blockquote>
       
       P5.jsの<code>draw()</code>がメインプロセスになって
       勝負の結果を表示しています。
